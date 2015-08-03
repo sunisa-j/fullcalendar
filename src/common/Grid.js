@@ -293,6 +293,18 @@ var Grid = fc.Grid = RowRenderer.extend({
 			}
 		});
 
+        // Add by Sunisa *****************************************************************
+        el.on('click', function(ev) {
+            // CUSTOM!!!!!!!!!!!
+
+            if (
+                !$(ev.target).is('.fc-event-container *, .fc-more') && // not an an event element, or "more.." link
+                !$(ev.target).closest('.fc-popover').length // not on a popover (like the "more.." events one)
+            ) {
+                _this.dayMouseClick(ev);
+            }
+        });
+
 		// attach event-element-related handlers. in Grid.events
 		// same garbage collection note as above.
 		this.bindSegHandlers();
@@ -346,6 +358,20 @@ var Grid = fc.Grid = RowRenderer.extend({
 		$(document).off('dragstart sortstart', this.externalDragStartProxy); // jqui
 	},
 
+    // Add by Sunisa *****************************************************************
+    dayMouseClick: function(ev) {
+        // CUSTOM!!!!!!!!!!!
+        var _this = this;
+        var view = this.view;
+        var start; // the inclusive start of the selection
+        var dayEl;
+
+        this.coordMap.build();
+        var cell = this.coordMap.getCell(ev.pageX, ev.pageY);
+        dayEl = _this.getCellDayEl(cell);
+        start = cell.start;
+        return view.trigger('dayClick', dayEl[0], start, ev);
+    },
 
 	// Process a mousedown on an element that represents a day. For day clicking and selecting.
 	dayMousedown: function(ev) {
