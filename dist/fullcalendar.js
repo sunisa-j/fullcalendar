@@ -3091,6 +3091,18 @@ var Grid = fc.Grid = RowRenderer.extend({
 			}
 		});
 
+        // Add by Sunisa *****************************************************************
+        el.on('click', function(ev) {
+            // CUSTOM!!!!!!!!!!!
+
+            if (
+                !$(ev.target).is('.fc-event-container *, .fc-more') && // not an an event element, or "more.." link
+                !$(ev.target).closest('.fc-popover').length // not on a popover (like the "more.." events one)
+            ) {
+                _this.dayMouseClick(ev);
+            }
+        });
+
 		// attach event-element-related handlers. in Grid.events
 		// same garbage collection note as above.
 		this.bindSegHandlers();
@@ -3144,6 +3156,20 @@ var Grid = fc.Grid = RowRenderer.extend({
 		$(document).off('dragstart sortstart', this.externalDragStartProxy); // jqui
 	},
 
+    // Add by Sunisa *****************************************************************
+    dayMouseClick: function(ev) {
+        // CUSTOM!!!!!!!!!!!
+        var _this = this;
+        var view = this.view;
+        var start; // the inclusive start of the selection
+        var dayEl;
+
+        this.coordMap.build();
+        var cell = this.coordMap.getCell(ev.pageX, ev.pageY);
+        dayEl = _this.getCellDayEl(cell);
+        start = cell.start;
+        return view.trigger('dayClick', dayEl[0], start, ev);
+    },
 
 	// Process a mousedown on an element that represents a day. For day clicking and selecting.
 	dayMousedown: function(ev) {
@@ -4611,7 +4637,8 @@ var DayGrid = Grid.extend({
 	// Computes a default column header formatting string if `colFormat` is not explicitly defined
 	computeColHeadFormat: function() {
 		if (this.rowCnt > 1) { // more than one week row. day numbers will be in each cell
-			return 'ddd'; // "Sat"
+			//return 'ddd'; // "Sat"
+            return 'dd'; // "Sa" Change by Sunisa **************************************
 		}
 		else if (this.colCnt > 1) { // multiple days, so full single date string WON'T be in title text
 			return this.view.opt('dayOfMonthFormat'); // "Sat 12/10"
@@ -5084,8 +5111,18 @@ DayGrid.mixin({
 		if (seg.isStart) {
 			timeText = this.getEventTimeText(event);
 			if (timeText) {
-				timeHtml = '<span class="fc-time">' + htmlEscape(timeText) + '</span>';
-			}
+				//timeHtml = '<span class="fc-time">' + htmlEscape(timeText) + '</span>';
+
+                // Add by Sunisa ***********************************************************
+                var newTime = event.start._d;
+                timeHtml = '<span class="fc-time">'+newTime.getHours()+':';
+                if(newTime.getMinutes()===0){
+                    timeHtml+='00';
+                }else {
+                    timeHtml+=newTime.getMinutes();
+                }
+                timeHtml+='</span>';
+            }
 		}
 
 		titleHtml =
@@ -10252,9 +10289,10 @@ var BasicView = View.extend({
 		classes.unshift('fc-day-number');
 
 		return '' +
-			'<td class="' + classes.join(' ') + '" data-date="' + date.format() + '">' +
-				date.date() +
-			'</td>';
+            '<td class="' + classes.join(' ') + '" data-date="' + date.format() + '"><div>' +
+            date.date() +
+            '</div></td>';
+        // Add <div> by Sunisa *****************************************************************
 	},
 
 
