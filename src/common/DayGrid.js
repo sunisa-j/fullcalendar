@@ -109,7 +109,8 @@ var DayGrid = Grid.extend({
 	// Computes a default column header formatting string if `colFormat` is not explicitly defined
 	computeColHeadFormat: function() {
 		if (this.rowCnt > 1) { // more than one week row. day numbers will be in each cell
-			return 'ddd'; // "Sat"
+			//return 'ddd'; // "Sat"
+            return 'dd'; // "Sa" Change by Sunisa **************************************
 		}
 		else if (this.colCnt > 1) { // multiple days, so full single date string WON'T be in title text
 			return this.view.opt('dayOfMonthFormat'); // "Sat 12/10"
