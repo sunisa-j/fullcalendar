@@ -169,9 +169,10 @@ var BasicView = View.extend({
 		classes.unshift('fc-day-number');
 
 		return '' +
-			'<td class="' + classes.join(' ') + '" data-date="' + date.format() + '">' +
-				date.date() +
-			'</td>';
+            '<td class="' + classes.join(' ') + '" data-date="' + date.format() + '"><div>' +
+            date.date() +
+            '</div></td>';
+        // Add <div> by Sunisa *****************************************************************
 	},
 
 
