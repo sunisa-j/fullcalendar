@@ -109,8 +109,12 @@ DayGrid.mixin({
 		if (seg.isStart) {
 			timeText = this.getEventTimeText(event);
 			if (timeText) {
-				timeHtml = '<span class="fc-time">' + htmlEscape(timeText) + '</span>';
-			}
+				//timeHtml = '<span class="fc-time">' + htmlEscape(timeText) + '</span>';
+
+                // Add by Sunisa ***********************************************************
+                var newTime = event.start._d;
+                timeHtml = '<span class="fc-time">' + newTime.getHours() + ':' + ((newTime.getMinutes()==0)? '00':newTime.getMinutes()) + '</span>';
+            }
 		}
 
 		titleHtml =
