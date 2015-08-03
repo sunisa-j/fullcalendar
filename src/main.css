@@ -1,123 +1,125 @@
 /* by Sunisa
 --------------------------------------------------------------------------------------------------*/
 .fc-toolbar {
-    display: flex;
-    display: -webkit-flex;
-    padding: 0 0 0 10px;
-    align-items: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    height: 30px;
-    margin-right: -2px;
-    background-color: #F5F5F5;
-    border-top: solid 1px #ECECEC;
+    display: flex !important;
+    display: -webkit-flex !important;
+    padding: 0 0 0 10px !important;
+    align-items: center !important;
+    -webkit-align-items: center !important;
+    -moz-align-items: center !important;
+    height: 30px !important;
+    margin-right: -2px !important;
+    background-color: #F5F5F5 !important;
+    border-top: solid 1px #ECECEC !important;
 }
 .fc-toolbar .fc-left {
-@extend .flex-1;
+    flex: 1 !important;
+    -webkit-flex: 1 !important;
+    -moz-flex: 1 !important;
 }
 .fc-toolbar .fc-left * {
     font-size: 16px !important;
-    padding-left: 5px;
+    padding-left: 5px !important;
 }
 .fc-toolbar .fc-right {
-    flex-basis: 88px;
-    -webkit-flex-basis: 88px;
-    -moz-flex-basis: 88px;
+    flex-basis: 88px !important;
+    -webkit-flex-basis: 88px !important;
+    -moz-flex-basis: 88px !important;
 }
 .fc-right button.fc-today-button {
-    display: none;
+    display: none !important;
 }
 .fc .button {
-    border-radius: 0;
+    border-radius: 0 !important;
     font-size: 16px !important;
-    padding-top: 1px;
+    padding-top: 1px !important;
 }
 .fc .fc-button-group > * {
-    width: 44px;
+    width: 44px !important;
 }
 .fc-button {
     height: 31px !important;
 }
 .fc-state-default.fc-corner-left {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
 }
 .fc-state-default.fc-corner-right {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: 0;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: 0 !important;
 }
 .fc-state-default {
-    color: #333;
-    background-color: #F5F5F5;
-    background-image: none;
-    box-shadow: none;
-    text-shadow: none;
-    border-top-color: #ECECEC;
-    border-color: #E4E4E4;
+    color: #333333 !important;
+    background-color: #F5F5F5 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border-top-color: #ECECEC !important;
+    border-color: #E4E4E4 !important;
 }
 .fc-today {
     background-color: transparent !important;
-    color: #FF0700;
+    color: #FF0700 !important;
 }
 .fc th {
-    text-align: center;
-    border-left: solid 0px #FFFFFF;
-    border-right: solid 0px #FFFFFF;
+    text-align: center !important;
+    border-left: solid 0px #FFFFFF !important;
+    border-right: solid 0px #FFFFFF !important;
     padding: 4px !important;
-    color: #6F6F6F;
-    font-size: 14px;
+    color: #6F6F6F !important;
+    font-size: 14px !important;
 }
 .fc td {
-    border-right: 0px;
-    border-color: #ECECEC;
+    border-right: 0px !important;
+    border-color: #ECECEC !important;
 }
 .fc-view-container {
-    margin-top: -16px;
-    margin-left: -1px;
+    margin-top: -16px !important;
+    margin-left: -1px !important;
 }
 .fc .fc-toolbar > * > * {
-    margin-left: -1px;
+    margin-left: -1px !important;
 }
 .fc-day-grid-event .fc-time {
     font-weight: normal !important;
-    color: #000;
+    color: #000000  !important;
 }
 .fc-title {
     color: #6F6F6F !important;
 }
 .fc-event .fc-content {
-    font-size: 12px;
+    font-size: 12px !important;
 }
 .fc-scroller {
-    overflow-y: auto;
+    overflow-y: auto !important;
 }
 .fc-row .fc-widget-header {
-    border-right-width: 0px;
+    border-right-width: 0px !important;
 }
 .fc-icon-left-single-arrow{
-    width: 0;
-    height: 0;
-    border-top: 9px solid transparent;
-    border-bottom: 9px solid transparent;
-    border-right: 10px solid #A7A7A7;
+    width: 0 !important;
+    height: 0 !important;
+    border-top: 9px solid transparent !important;
+    border-bottom: 9px solid transparent !important;
+    border-right: 10px solid #A7A7A7 !important;
 }
 .fc-icon-right-single-arrow {
-    width: 0;
-    height: 0;
-    border-top: 9px solid transparent;
-    border-bottom: 9px solid transparent;
-    border-left: 10px solid #A7A7A7;
+    width: 0 !important;
+    height: 0 !important;
+    border-top: 9px solid transparent !important;
+    border-bottom: 9px solid transparent !important;
+    border-left: 10px solid #A7A7A7 !important;
 }
 .fc-ltr .fc-basic-view .fc-day-number {
-    padding-right: 5px;
-    position: relative;
+    padding-right: 5px !important;
+    position: relative !important;
 }
 .fc-today-button {
     color: #FF0700 !important;
 }
 .fc-ltr .fc-basic-view .fc-day-number {
-@extend .pointer;
+    cursor: pointer !important;
 }
 .number-circle-bg {
     position: absolute;
