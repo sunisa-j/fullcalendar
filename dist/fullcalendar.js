@@ -3157,7 +3157,31 @@ var Grid = fc.Grid = RowRenderer.extend({
 	},
 
     // Add by Sunisa *****************************************************************
+
     dayMouseClick: function(ev) {
+
+        function setDayRedBg(dataDate) {
+            $("td.fc-day-number.fc-other-month").css('opacity', 0.3);
+            $("td.fc-day-number div").removeClass('number-circle-bg');
+
+            var isOtherMonth = $("td.fc-day-number[data-date=" + dataDate + "]").hasClass('fc-other-month').toString();
+            if(isOtherMonth) {
+                $("td.fc-day-number[data-date=" + dataDate + "]").css('opacity', 1);
+            }
+            $("td.fc-day-number.fc-today[data-date=" + dataDate + "] div").addClass('today-number-circle-bg');
+        }
+        function setDayBlackBg(dataDate) {
+            $("td.fc-day-number.fc-other-month").css('opacity', 0.3);
+            $("td.fc-day-number.fc-today div").removeClass('today-number-circle-bg');
+            $("td.fc-day-number div").removeClass('number-circle-bg');
+
+            var isOtherMonth = $("td.fc-day-number[data-date=" + dataDate + "]").hasClass('fc-other-month').toString();
+            if(isOtherMonth) {
+                $("td.fc-day-number[data-date=" + dataDate + "]").css('opacity', 1);
+            }
+            $("td.fc-day-number[data-date=" + dataDate + "] div").addClass('number-circle-bg');
+        }
+
         // CUSTOM!!!!!!!!!!!
         var _this = this;
         var view = this.view;
@@ -3168,6 +3192,32 @@ var Grid = fc.Grid = RowRenderer.extend({
         var cell = this.coordMap.getCell(ev.pageX, ev.pageY);
         dayEl = _this.getCellDayEl(cell);
         start = cell.start;
+
+        // When select day
+        var dateSelected = new Date(start._d);
+
+        var dataMonth = dateSelected.getMonth()+1;
+        var dataDay = dateSelected.getDate();
+        var dataDate = dateSelected.getFullYear()+'-';
+        if(dataMonth<10){
+            dataDate += '0'+dataMonth+'-';
+        }else{
+            dataDate += dataMonth+'-';
+        }
+        if(dataDay<10){
+            dataDate += '0'+dataDay;
+        }else{
+            dataDate += dataDay;
+        }
+        var dateNow = new Date();
+
+        // change the day's background
+        if(dateSelected.setHours(0,0,0,0) == dateNow.setHours(0,0,0,0)) {
+            setDayRedBg(dataDate);
+        }else {
+            setDayBlackBg(dataDate);
+        }
+
         return view.trigger('dayClick', dayEl[0], start, ev);
     },
 
