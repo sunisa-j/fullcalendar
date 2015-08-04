@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 		'clean',
 		'modules',
 		'languages',
-		'karma:single',
+		//'karma:single',
 		'archiveDist'
 	]);
 
@@ -180,7 +180,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('archive', 'Create a distributable ZIP archive', [
 		'modules',
 		'languages',
-		'karma:single',
+		//'karma:single',
 		'archiveDist'
 	]);
 
@@ -321,7 +321,7 @@ module.exports = function(grunt) {
 		'clean:cdnjs',
 		'modules',
 		'languages',
-		'karma:single',
+		//'karma:single',
 		'cdnjsDist'
 	]);
 
