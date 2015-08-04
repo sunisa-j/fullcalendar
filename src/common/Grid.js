@@ -400,7 +400,17 @@ var Grid = fc.Grid = RowRenderer.extend({
 
         var dataMonth = dateSelected.getMonth()+1;
         var dataDay = dateSelected.getDate();
-        var dataDate = dateSelected.getFullYear() + '-' + ((dataMonth < 10)? ('0'+dataMonth):dataMonth) + '-' + ((dataDay < 10)? ('0'+dataDay):dataDay);
+        var dataDate = dateSelected.getFullYear()+'-';
+        if(dataMonth<10){
+            dataDate += '0'+dataMonth+'-';
+        }else{
+            dataDate += dataMonth+'-';
+        }
+        if(dataDay<10){
+            dataDate += '0'+dataDay;
+        }else{
+            dataDate += dataDay;
+        }
         var dateNow = new Date();
 
         // change the day's background
